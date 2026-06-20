@@ -44,7 +44,7 @@ class _ProductspageState extends State<Productspage> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Shopease',
+            'ShopEase',
             style: customisedStyle(
               colorScheme.onSurface,
               FontWeight.bold,

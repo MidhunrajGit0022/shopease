@@ -63,7 +63,7 @@ class CartPage extends StatelessWidget {
                           child: Text(
                             'Clear',
                             style: customisedStyle(
-                              colorScheme.onSurface,
+                              colorScheme.onPrimary,
                               FontWeight.w500,
                               12.0,
                             ),
