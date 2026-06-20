@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopease/cart/cart_cubit.dart';
-import 'package:shopease/presentation/pages/MainScreen.dart';
-import 'package:shopease/productBloc/product_bloc_bloc.dart';
-import 'package:shopease/theme/theme_cubit.dart';
+import 'package:shopease/features/cart/cubit/cart_cubit.dart';
+import 'package:shopease/features/product/bloc/product_bloc.dart';
+import 'package:shopease/features/theme/cubit/theme_cubit.dart';
+import 'package:shopease/presentation/main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +11,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -36,12 +35,11 @@ class MyApp extends StatelessWidget {
   }
 
   ThemeData _buildLightTheme() {
-    const seedColor = Color(0xFF6C5CE7);
+    const seedColor = Color(0xFF0052FF);
     final colorScheme = ColorScheme.fromSeed(
       seedColor: seedColor,
       brightness: Brightness.light,
     );
-
     return ThemeData(
       useMaterial3: true,
       colorScheme: colorScheme,
@@ -60,9 +58,7 @@ class MyApp extends StatelessWidget {
       cardTheme: CardThemeData(
         elevation: 2,
         shadowColor: colorScheme.shadow.withValues(alpha: 0.15),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         surfaceTintColor: colorScheme.surfaceTint,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -74,10 +70,7 @@ class MyApp extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(28),
           ),
-          textStyle: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
+          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
@@ -95,14 +88,15 @@ class MyApp extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(color: colorScheme.primary, width: 2),
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 14,
+        ),
         prefixIconColor: colorScheme.onSurfaceVariant,
         labelStyle: TextStyle(color: colorScheme.onSurfaceVariant),
       ),
       iconButtonTheme: IconButtonThemeData(
-        style: IconButton.styleFrom(
-          foregroundColor: colorScheme.onSurface,
-        ),
+        style: IconButton.styleFrom(foregroundColor: colorScheme.onSurface),
       ),
       dividerTheme: DividerThemeData(
         color: colorScheme.outlineVariant.withValues(alpha: 0.5),
@@ -110,9 +104,7 @@ class MyApp extends StatelessWidget {
       ),
       snackBarTheme: SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         backgroundColor: colorScheme.inverseSurface,
         contentTextStyle: TextStyle(color: colorScheme.onInverseSurface),
       ),
@@ -120,12 +112,11 @@ class MyApp extends StatelessWidget {
   }
 
   ThemeData _buildDarkTheme() {
-    const seedColor = Color(0xFF6C5CE7);
+    const seedColor = Color(0xFF0052FF);
     final colorScheme = ColorScheme.fromSeed(
       seedColor: seedColor,
       brightness: Brightness.dark,
     );
-
     return ThemeData(
       useMaterial3: true,
       colorScheme: colorScheme,
@@ -144,9 +135,7 @@ class MyApp extends StatelessWidget {
       cardTheme: CardThemeData(
         elevation: 4,
         shadowColor: Colors.black.withValues(alpha: 0.4),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         color: colorScheme.surfaceContainer,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -158,10 +147,7 @@ class MyApp extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(28),
           ),
-          textStyle: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
+          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
@@ -179,14 +165,15 @@ class MyApp extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(color: colorScheme.primary, width: 2),
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 14,
+        ),
         prefixIconColor: colorScheme.onSurfaceVariant,
         labelStyle: TextStyle(color: colorScheme.onSurfaceVariant),
       ),
       iconButtonTheme: IconButtonThemeData(
-        style: IconButton.styleFrom(
-          foregroundColor: colorScheme.onSurface,
-        ),
+        style: IconButton.styleFrom(foregroundColor: colorScheme.onSurface),
       ),
       dividerTheme: DividerThemeData(
         color: colorScheme.outlineVariant.withValues(alpha: 0.3),
@@ -194,9 +181,7 @@ class MyApp extends StatelessWidget {
       ),
       snackBarTheme: SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         backgroundColor: colorScheme.inverseSurface,
         contentTextStyle: TextStyle(color: colorScheme.onInverseSurface),
       ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopease/cart/cart_cubit.dart';
-import 'package:shopease/presentation/pages/CartPage.dart';
-import 'package:shopease/presentation/pages/Productspage.dart';
-import 'package:shopease/presentation/pages/SettingsPage.dart';
+import 'package:shopease/features/cart/cubit/cart_cubit.dart';
+import 'package:shopease/features/cart/pages/cart_page.dart';
+import 'package:shopease/features/product/pages/products_page.dart';
+import 'package:shopease/features/settings/pages/settings_page.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -15,7 +15,11 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = [Productspage(), const CartPage(), const SettingsPage()];
+  final List<Widget> _pages = [
+    const Productspage(),
+    const CartPage(),
+    const SettingsPage(),
+  ];
 
   final List<IconData> _navIcons = [
     Icons.home_rounded,
@@ -58,7 +62,9 @@ class _MainScreenState extends State<MainScreen> {
             ),
             boxShadow: [
               BoxShadow(
-                color: colorScheme.shadow.withValues(alpha: isDark ? 0.4 : 0.15),
+                color: colorScheme.shadow.withValues(
+                  alpha: isDark ? 0.4 : 0.15,
+                ),
                 blurRadius: 20,
                 offset: const Offset(0, 8),
               ),
@@ -92,38 +98,21 @@ class _MainScreenState extends State<MainScreen> {
         height: 48,
         padding: EdgeInsets.symmetric(horizontal: isSelected ? 16 : 12),
         decoration: BoxDecoration(
-          color: isSelected
-              ? colorScheme.primary
-              : Colors.transparent,
+          color: isSelected ? colorScheme.primary : Colors.transparent,
           borderRadius: BorderRadius.circular(24),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Show badge on cart icon
             if (index == 1)
               BlocBuilder<CartCubit, CartState>(
                 builder: (context, cartState) {
-                  return Badge(
-                    isLabelVisible: cartState.totalItems > 0,
-                    label: Text(
-                      '${cartState.totalItems}',
-                      style: TextStyle(
-                        color: colorScheme.onError,
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    backgroundColor: isSelected
+                  return Icon(
+                    icon,
+                    color: isSelected
                         ? colorScheme.onPrimary
-                        : colorScheme.error,
-                    child: Icon(
-                      icon,
-                      color: isSelected
-                          ? colorScheme.onPrimary
-                          : colorScheme.onSurfaceVariant,
-                      size: 24,
-                    ),
+                        : colorScheme.onSurfaceVariant,
+                    size: 24,
                   );
                 },
               )

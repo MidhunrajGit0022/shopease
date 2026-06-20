@@ -5,8 +5,8 @@ import 'package:equatable/equatable.dart';
 import 'package:http/http.dart' as http;
 import 'package:shopease/core/global.dart';
 
-part 'product_bloc_event.dart';
-part 'product_bloc_state.dart';
+part 'product_event.dart';
+part 'product_state.dart';
 
 class ProductBloc extends Bloc<ProductBlocEvent, ProductBlocState> {
   ProductBloc() : super(ProductBlocInitial()) {
