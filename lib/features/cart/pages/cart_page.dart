@@ -173,7 +173,7 @@ class CartPage extends StatelessWidget {
             content: Text(
               '${item.title} removed from cart',
               style: customisedStyle(
-                const Color(0xFF000000),
+                colorScheme.onPrimary,
                 FontWeight.w500,
                 12.0,
               ),
