@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopease/features/cart/cubit/cart_cubit.dart';
 import 'package:shopease/features/product/bloc/product_bloc.dart';
 import 'package:shopease/features/theme/cubit/theme_cubit.dart';
-import 'package:shopease/presentation/main_screen.dart';
+import 'package:shopease/presentation/splashScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
             themeMode: themeMode,
             theme: _buildLightTheme(),
             darkTheme: _buildDarkTheme(),
-            home: const MainScreen(),
+            home: Splash(),
           );
         },
       ),
